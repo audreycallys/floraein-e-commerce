@@ -6,7 +6,7 @@ const Products = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-  
+
   return (
     <div className="min-h-screen bg-white px-6 py-16">
       <div className="mx-auto max-w-7xl">
@@ -28,12 +28,7 @@ const Products = () => {
         {/* Product List */}
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 sm:gap-x-10 sm:gap-y-14 lg:grid-cols-4">
           {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              isAdded={false}
-              onAddToCart={() => {}}
-            />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>

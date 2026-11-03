@@ -1,15 +1,18 @@
-import { Route, Routes } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
+
+import { CartProvider } from "./context/CartContext"
 
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
+
 import Home from "./pages/Home"
 import Products from "./pages/Products"
 import ProductDetail from "./pages/ProductDetail"
 import Cart from "./pages/Cart"
-import Footer from "./components/Footer"
 
 function App() {
   return (
-    <div>
+    <CartProvider>
       <Navbar />
 
       <Routes>
@@ -20,7 +23,7 @@ function App() {
       </Routes>
 
       <Footer />
-    </div>
+    </CartProvider>
   )
 }
 

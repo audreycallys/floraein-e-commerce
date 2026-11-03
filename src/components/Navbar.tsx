@@ -1,17 +1,16 @@
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { Menu, ShoppingBag, X } from "lucide-react"
+import { useCart } from "../context/CartContext"
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  // Sementara gunakan angka 0.
-  // Nanti akan dihubungkan dengan data keranjang.
-  const cartCount = 0
+  const { cartCount } = useCart()
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Products", path: "/products" }
+    { name: "Products", path: "/products" },
   ]
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>

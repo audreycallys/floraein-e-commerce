@@ -140,12 +140,7 @@ function Home() {
 
           <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-6">
             {products.slice(0, 4).map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                isAdded={false}
-                onAddToCart={() => {}}
-              />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>

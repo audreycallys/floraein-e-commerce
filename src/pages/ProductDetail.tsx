@@ -1,11 +1,13 @@
-import { ArrowLeft, Heart, ShoppingBag, Truck, ShieldCheck } from "lucide-react"
+import { ArrowLeft, ShoppingBag } from "lucide-react"
+
 import { Button } from "../components/ui/button"
 import { products } from "../data/products"
 import { Link, useParams } from "react-router-dom"
-
+import { useCart } from "../context/CartContext"
 import { useEffect } from "react"
 
 const ProductDetail = () => {
+  const { addToCart } = useCart()
   const { id } = useParams()
 
   const product = products.find((item) => item.id === Number(id))
@@ -34,7 +36,7 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="bg-white px-6 py-10 sm:py-12">
+    <div className="min-h-screen bg-white px-6 py-12 sm:py-16">
       <div className="mx-auto max-w-7xl">
         {/* Breadcrumb */}
         <div className="mb-10">
@@ -86,7 +88,10 @@ const ProductDetail = () => {
 
             {/* Product Actions */}
             <div className="mt-10 flex flex-wrap gap-3">
-              <Button className="h-12 flex-1 rounded-full bg-primary text-sm font-medium text-white hover:bg-primary-hover">
+              <Button
+                onClick={() => addToCart(product)}
+                className="h-12 flex-1 rounded-full bg-primary text-sm font-medium text-white hover:bg-primary-hover"
+              >
                 <ShoppingBag size={17} />
                 Add to Cart
               </Button>
