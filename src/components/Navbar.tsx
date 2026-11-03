@@ -13,7 +13,8 @@ function Navbar() {
     { name: "Products", path: "/products" },
   ]
 
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
+  // Desktop Navigation
+  const desktopLinkClass = ({ isActive }: { isActive: boolean }) =>
     `relative text-sm transition-colors duration-200
     after:absolute after:-bottom-2 after:left-0 after:h-[2px]
     after:w-full after:origin-left after:transition-transform
@@ -22,6 +23,18 @@ function Navbar() {
       isActive
         ? "font-semibold text-primary after:scale-x-100 after:bg-primary"
         : "text-foreground after:scale-x-0 after:bg-primary hover:text-primary hover:after:scale-x-100"
+    }`
+
+  // Mobile Navigation
+  const mobileLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `relative w-fit self-start text-sm transition-colors duration-200
+    after:absolute after:-bottom-2 after:left-0 after:h-[2px]
+    after:w-full after:origin-left after:transition-transform
+    after:duration-200
+    ${
+      isActive
+        ? "font-semibold text-primary after:scale-x-100 after:bg-primary"
+        : "text-foreground after:scale-x-0 after:bg-primary"
     }`
 
   return (
@@ -49,7 +62,7 @@ function Navbar() {
                 key={item.path}
                 to={item.path}
                 end={item.path === "/"}
-                className={linkClass}
+                className={desktopLinkClass}
               >
                 {item.name}
               </NavLink>
@@ -103,7 +116,7 @@ function Navbar() {
                 to={item.path}
                 end={item.path === "/"}
                 onClick={() => setIsMenuOpen(false)}
-                className={linkClass}
+                className={mobileLinkClass}
               >
                 {item.name}
               </NavLink>
@@ -112,7 +125,7 @@ function Navbar() {
             <NavLink
               to="/cart"
               onClick={() => setIsMenuOpen(false)}
-              className={linkClass}
+              className={mobileLinkClass}
             >
               Cart
             </NavLink>
