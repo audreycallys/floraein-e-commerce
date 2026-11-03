@@ -11,8 +11,7 @@ function Navbar() {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Products", path: "/products" },
-    { name: "About Us", path: "/about" },
+    { name: "Products", path: "/products" }
   ]
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -28,9 +27,9 @@ function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white">
-      <nav className="mx-auto grid h-20 max-w-7xl grid-cols-2 items-center px-6 md:grid-cols-3">
-        {/* Brand */}
-        <NavLink to="/" className="flex items-center gap-2 justify-self-start">
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+        {/* Brand - Left */}
+        <NavLink to="/" className="flex items-center gap-2">
           <img
             src="/images/logo.png"
             alt="FLORAEIN Logo"
@@ -42,23 +41,26 @@ function Navbar() {
           </span>
         </NavLink>
 
-        {/* Desktop Navigation */}
-        <div className="hidden items-center justify-center gap-8 md:flex">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.path === "/"}
-              className={linkClass}
-            >
-              {item.name}
-            </NavLink>
-          ))}
-        </div>
+        {/* Navigation - Right */}
+        <div className="flex items-center gap-6">
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-8 md:flex">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === "/"}
+                className={linkClass}
+              >
+                {item.name}
+              </NavLink>
+            ))}
+          </div>
 
-        {/* Right Actions */}
-        <div className="flex items-center gap-4 justify-self-end">
-          {/* Cart Button */}
+          {/* Divider */}
+          <div className="hidden h-6 w-px bg-border md:block" />
+
+          {/* Cart */}
           <NavLink
             to="/cart"
             aria-label={`Shopping cart with ${cartCount} items`}
